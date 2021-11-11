@@ -18,6 +18,7 @@
                 android:id="@+id/import_manually_vmess"
                 android:title="@string/menu_item_import_config_manually_vmess"
                 app:showAsAction="never" />
+            <item android:id="@+id/import_manually_vless" android:title="@string/menu_item_import_config_manually_vless" app:showAsAction="never" />
             <item
                 android:id="@+id/import_manually_ss"
                 android:title="@string/menu_item_import_config_manually_ss"
@@ -26,7 +27,8 @@
                 android:id="@+id/import_manually_socks"
                 android:title="@string/menu_item_import_config_manually_socks"
                 app:showAsAction="never" />
-
+            <item android:id="@+id/import_manually_trojan" android:title="@string/menu_item_import_config_manually_trojan" app:showAsAction="never" />
+            
             <item
                 android:icon="@drawable/ic_add_white_24dp"
                 android:title="@string/menu_item_import_config_custom"

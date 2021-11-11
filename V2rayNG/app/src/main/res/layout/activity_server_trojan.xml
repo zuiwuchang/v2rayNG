@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:padding="@dimen/layout_margin_top_height" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Subhead" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/title_server" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/layout_margin_top_height">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/server_lab_remarks" />
+            <EditText android:id="@+id/et_remarks" android:layout_width="fill_parent" android:layout_height="@dimen/edit_height" android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/layout_margin_top_height">
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/server_lab_address3" />
+            <EditText android:id="@+id/et_address" android:layout_width="fill_parent" android:layout_height="@dimen/edit_height" android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/layout_margin_top_height">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/server_lab_port3" />
+            <EditText android:id="@+id/et_port" android:layout_width="fill_parent" android:layout_height="@dimen/edit_height" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/layout_margin_top_height">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/server_lab_id3" />
+            <EditText android:id="@+id/et_id" android:layout_width="fill_parent" android:layout_height="@dimen/edit_height" android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/layout_margin_top_height">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/server_lab_sni" />
+            <EditText android:id="@+id/et_sni" android:layout_width="fill_parent" android:layout_height="@dimen/edit_height" android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/layout_margin_top_height">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/server_lab_allow_insecure" />
+            <Spinner android:entries="@array/allowinsecures" android:id="@+id/sp_allow_insecure" android:layout_width="fill_parent" android:layout_height="@dimen/edit_height" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/layout_margin_top_height" android:layout_marginBottom="@dimen/layout_margin_top_height" />
+    </LinearLayout>
+</ScrollView>

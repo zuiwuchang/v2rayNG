@@ -3,6 +3,7 @@ package com.v2ray.ang.ui
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import android.text.TextUtils
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -22,6 +23,8 @@ import com.v2ray.ang.util.MmkvManager.ID_MAIN
 import com.v2ray.ang.util.MmkvManager.KEY_SELECTED_SERVER
 import com.v2ray.ang.util.Utils
 import kotlinx.android.synthetic.main.activity_server_socks.*
+import kotlinx.android.synthetic.main.activity_server_socks.et_security
+import kotlinx.android.synthetic.main.activity_server_vless.*
 import kotlinx.android.synthetic.main.activity_server_vmess.*
 import kotlinx.android.synthetic.main.activity_server_vmess.et_address
 import kotlinx.android.synthetic.main.activity_server_vmess.et_id
@@ -86,8 +89,8 @@ class ServerActivity : BaseActivity() {
             EConfigType.CUSTOM -> return
             EConfigType.SHADOWSOCKS -> setContentView(R.layout.activity_server_shadowsocks)
             EConfigType.SOCKS -> setContentView(R.layout.activity_server_socks)
-//            EConfigType.VLESS -> setContentView(R.layout.activity_server_vless)
-//            EConfigType.TROJAN -> setContentView(R.layout.activity_server_trojan)
+            EConfigType.VLESS -> setContentView(R.layout.activity_server_vless)
+            EConfigType.TROJAN -> setContentView(R.layout.activity_server_trojan)
         }
         sp_network?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -123,6 +126,10 @@ class ServerActivity : BaseActivity() {
     private fun bindingServer(config: ServerConfig): Boolean {
         val outbound = config.getProxyOutbound() ?: return false
         val streamSetting = config.outboundBean?.streamSettings ?: return false
+        if(streamSetting != null){
+            val tlsSettings = if (streamSetting.security == XTLS) streamSetting.xtlsSettings else streamSetting.tlsSettings
+            et_sni?.text = Utils.getEditable(tlsSettings?.serverName?.toString()?:"")
+        }
 
         et_remarks.text = Utils.getEditable(config.remarks)
         et_address.text = Utils.getEditable(outbound.getServerAddress().orEmpty())
@@ -135,7 +142,7 @@ class ServerActivity : BaseActivity() {
             et_security.text = Utils.getEditable(outbound.getSecurityEncryption().orEmpty())
             val flow = Utils.arrayFind(flows, outbound.settings?.vnext?.get(0)?.users?.get(0)?.flow.orEmpty())
             if (flow >= 0) {
-                //sp_flow.setSelection(flow)
+                sp_flow.setSelection(flow)
             }
         }
         val securityEncryptions = if (config.configType == EConfigType.SHADOWSOCKS) shadowsocksSecuritys else securitys
@@ -152,7 +159,7 @@ class ServerActivity : BaseActivity() {
                 if (allowinsecure >= 0) {
                     sp_allow_insecure?.setSelection(allowinsecure)
                 }
-                et_request_host.text = Utils.getEditable(tlsSetting.serverName)
+                et_request_host?.text = Utils.getEditable(tlsSetting.serverName)
             }
         }
         val network = Utils.arrayFind(networks, streamSetting.network)
@@ -181,7 +188,7 @@ class ServerActivity : BaseActivity() {
         sp_allow_insecure?.setSelection(0)
 
         //et_security.text = null
-        //sp_flow?.setSelection(0)
+        sp_flow?.setSelection(0)
         return true
     }
 
@@ -242,8 +249,8 @@ class ServerActivity : BaseActivity() {
         } else if (config.configType == EConfigType.VLESS) {
             vnext.users[0].encryption = et_security.text.toString().trim()
             if (streamSecuritys[sp_stream_security.selectedItemPosition] == XTLS) {
-//                vnext.users[0].flow = if (flows[sp_flow.selectedItemPosition].isBlank()) V2rayConfig.DEFAULT_FLOW
-//                else flows[sp_flow.selectedItemPosition]
+               vnext.users[0].flow = if (flows[sp_flow.selectedItemPosition].isBlank()) V2rayConfig.DEFAULT_FLOW
+               else flows[sp_flow.selectedItemPosition]
             } else {
                 vnext.users[0].flow = ""
             }
@@ -286,6 +293,9 @@ class ServerActivity : BaseActivity() {
                 mode = type,
                 serviceName = path
         )
+        if (et_sni != null){
+            sni = et_sni.text.toString().trim()
+        }
         val allowInsecure = if (sp_allow_insecure == null || allowinsecures[sp_allow_insecure.selectedItemPosition].isBlank()) {
             false//settingsStorage?.decodeBool(PREF_ALLOW_INSECURE) ?: false
         } else {

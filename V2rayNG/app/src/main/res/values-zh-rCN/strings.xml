@@ -203,4 +203,8 @@
         <item>仅代理</item>
     </string-array>
 
+    <string name="server_lab_flow">流控(flow)</string>
+    <string name="server_lab_encryption">加密(encryption)</string>
+    <string name="menu_item_import_config_manually_trojan">手动输入[Trojan]</string>
+    <string name="menu_item_import_config_manually_vless">手动输入[VLESS]</string>
 </resources>

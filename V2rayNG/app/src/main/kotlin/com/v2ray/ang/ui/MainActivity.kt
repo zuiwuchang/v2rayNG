@@ -189,6 +189,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             setClass(this, ServerActivity::class.java))
             true
         }
+        R.id.import_manually_vless -> {
+            startActivity(Intent().putExtra("createConfigType", EConfigType.VLESS.value).
+            setClass(this, ServerActivity::class.java))
+            true
+        }
         R.id.import_manually_ss -> {
             startActivity(Intent().putExtra("createConfigType", EConfigType.SHADOWSOCKS.value).
             setClass(this, ServerActivity::class.java))
@@ -196,6 +201,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
         R.id.import_manually_socks -> {
             startActivity(Intent().putExtra("createConfigType", EConfigType.SOCKS.value).
+            setClass(this, ServerActivity::class.java))
+            true
+        }
+        R.id.import_manually_trojan -> {
+            startActivity(Intent().putExtra("createConfigType", EConfigType.TROJAN.value).
             setClass(this, ServerActivity::class.java))
             true
         }

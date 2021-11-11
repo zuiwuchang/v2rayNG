@@ -206,4 +206,9 @@
         <item>Proxy only</item>
     </string-array>
 
+    <string name="server_lab_sni">SNI</string>
+    <string name="server_lab_flow">flow</string>
+    <string name="server_lab_encryption">encryption</string>
+    <string name="menu_item_import_config_manually_trojan">Type manually[Trojan]</string>    
+     <string name="menu_item_import_config_manually_vless">Type manually[VLESS]</string>
 </resources>
