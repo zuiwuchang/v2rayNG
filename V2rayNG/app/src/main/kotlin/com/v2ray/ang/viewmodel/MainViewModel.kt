@@ -37,6 +37,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val tcpingTestScope by lazy { CoroutineScope(Dispatchers.IO) }
 
     fun startListenBroadcast() {
+        Log.d("sendMsg2UI","startListenBroadcast")
         isRunning.value = false
         getApplication<AngApplication>().registerReceiver(mMsgReceiver, IntentFilter(AppConfig.BROADCAST_ACTION_ACTIVITY))
         MessageUtil.sendMsg2Service(getApplication(), AppConfig.MSG_REGISTER_CLIENT, "")
@@ -123,6 +124,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val mMsgReceiver = object : BroadcastReceiver() {
         override fun onReceive(ctx: Context?, intent: Intent?) {
+            Log.d("sendMsg2UI","onReceive")
             when (intent?.getIntExtra("key", 0)) {
                 AppConfig.MSG_STATE_RUNNING -> {
                     isRunning.value = true

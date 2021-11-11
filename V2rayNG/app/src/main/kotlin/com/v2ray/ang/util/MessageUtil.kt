@@ -2,6 +2,7 @@ package com.v2ray.ang.util
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import com.v2ray.ang.AppConfig
 
 

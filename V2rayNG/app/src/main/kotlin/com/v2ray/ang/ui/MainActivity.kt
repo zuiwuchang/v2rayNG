@@ -66,6 +66,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         setSupportActionBar(binding.toolbar)
 
         binding.fab.setOnClickListener {
+            Log.i("isRunning",(mainViewModel.isRunning.value==true).toString())
             if (mainViewModel.isRunning.value == true) {
                 Utils.stopVService(this)
             } else if (settingsStorage?.decodeString(AppConfig.PREF_MODE) ?: "VPN" == "VPN") {
@@ -152,9 +153,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     fun startV2Ray() {
+        Log.d("sendMsg2UI","startV2Ray 0")
         if (mainStorage?.decodeString(MmkvManager.KEY_SELECTED_SERVER).isNullOrEmpty()) {
             return
         }
+        Log.d("sendMsg2UI","startV2Ray 1")
         showCircle()
 //        toast(R.string.toast_services_start)
         V2RayServiceManager.startV2Ray(this)

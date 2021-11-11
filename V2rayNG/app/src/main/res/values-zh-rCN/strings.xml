@@ -207,4 +207,10 @@
     <string name="server_lab_encryption">加密(encryption)</string>
     <string name="menu_item_import_config_manually_trojan">手动输入[Trojan]</string>
     <string name="menu_item_import_config_manually_vless">手动输入[VLESS]</string>
+
+    <string name="title_service_restart">服务重启</string>
+    <string name="title_del_all_config">删除全部配置</string>
+    <string name="title_del_invalid_config">删除无效配置(先测试)</string>
+    <string name="title_real_ping_all_server">测试全部配置真连接</string>
+    <string name="title_sort_by_test_results">按测试结果排序</string>
 </resources>

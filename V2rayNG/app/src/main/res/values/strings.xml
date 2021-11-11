@@ -210,5 +210,11 @@
     <string name="server_lab_flow">flow</string>
     <string name="server_lab_encryption">encryption</string>
     <string name="menu_item_import_config_manually_trojan">Type manually[Trojan]</string>    
-     <string name="menu_item_import_config_manually_vless">Type manually[VLESS]</string>
+    <string name="menu_item_import_config_manually_vless">Type manually[VLESS]</string>
+
+    <string name="title_service_restart">Service restart</string>
+    <string name="title_del_all_config">Delete all config</string>
+    <string name="title_del_invalid_config">Delete invalid config(Test first)</string>
+    <string name="title_real_ping_all_server">Real delay all configuration</string>
+    <string name="title_sort_by_test_results">Sorting by test results</string>
 </resources>
